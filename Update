@@ -1,0 +1,16 @@
+16th April:
+- Studied OpenCv
+- Learned to read, resize, show, and stack images in single window
+- Learned to read and draw contours
+- Had problem in getting a sample omr sheet with less number of question for trials
+- Had wrong reading
+- Tried making omr in word but it was not good and was giving wrong results
+- To be continued.
+
+17th April:
+- Designed a OMR for the project
+- Identified the rectangles and form them the needed ones.
+- Extracted the corner points.
+- Reordered the corner points.
+- Extracted or Got the Warp Image of the Bubble points.
+- To be continued.
