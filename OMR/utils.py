@@ -84,3 +84,17 @@ def reorder(myPoints):
     # print(diff)
 
     return myPointsNew
+
+
+def splitBoxes(img):
+    rows = np.vsplit(img, 10)
+    # cv2.imshow("Split", rows[0])
+    boxes = []
+    for r in rows:
+        cols = np.hsplit(r, 5)
+
+        for box in cols:
+            boxes.append(box)
+            # cv2.imshow("Split", box)
+
+    return boxes

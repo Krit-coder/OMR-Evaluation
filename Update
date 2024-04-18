@@ -12,5 +12,15 @@
 - Identified the rectangles and form them the needed ones.
 - Extracted the corner points.
 - Reordered the corner points.
-- Extracted or Got the Warp Image of the Bubble points.
+- Extracted or Got the Warp Image(Only Bubble portion of img) of the Bubble points.
 - To be continued.
+
+18th April:
+- We converted the Warp Img to Threshold Img so that we can identify the marked bubble.
+- We made a function to extract each bubble and store it in an array.
+- There was error as there was non uniformity in the OMR sheet.
+- Gave Some time in Redesigning the OMR Sheet.
+- Now can extract each box and check there non zero value (marked box having the highest value)
+- We calculated the Non Zero pixel value of each box.
+- Made an array that contained the index of the marked boxes.
+- To be continued
