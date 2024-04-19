@@ -98,3 +98,30 @@ def splitBoxes(img):
             # cv2.imshow("Split", box)
 
     return boxes
+
+
+def showAnswers(img, questions, choices, myIndex, grading, ans):
+    # print(img.shape)
+    secW = int(img.shape[1] / choices)
+    secH = int(img.shape[0] / questions)
+    # print(secH,secW)
+
+    for x in range(questions):
+        myAns = myIndex[x]
+        cX = (myAns * secW) + secW // 2
+        cY = (x * secH) + secH // 2
+
+        correctColor = (0, 255, 0)
+        wrongColor = (0, 0, 255)
+        if grading[x] == 1:
+            myColor = correctColor
+        else:
+            myColor = wrongColor
+            correctAns = ans[x]
+            cX1 = (correctAns * secW) + secW // 2
+            # cY1 = (x * secH) + secH // 2
+            cv2.circle(img, (cX1, cY), 15, correctColor, cv2.FILLED)
+
+        cv2.circle(img, (cX, cY), 28, myColor, cv2.FILLED)
+
+    return img

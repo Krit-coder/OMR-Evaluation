@@ -24,3 +24,9 @@
 - We calculated the Non Zero pixel value of each box.
 - Made an array that contained the index of the marked boxes.
 - To be continued
+
+19th April:
+- We calculated the grades/percentage.
+- We marked the Warp img with green and red marks showing the correct and wrong ones.
+- We made a Raw img of the markings so that we can overlap the original image with it.
+- To be Continued.

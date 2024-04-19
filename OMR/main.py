@@ -73,17 +73,38 @@ if biggestContour.size != 0 and gradePoints.size != 0:
 
     # print(myPixelVal)
 
+    # FINDING INDEX VALUES OF THE MARKINGS
     myIndex = []
     for x in range(questions):
         arr = myPixelVal[x]
         myIndexVal = np.where(arr == np.amax(arr))
         # print(myIndexVal[0])
         myIndex.append(myIndexVal[0][0])
+    # print(myIndex)
+
+    # GRADING
+    grading = []
+    for x in range(questions):
+        if ans[x] == myIndex[x]:
+            grading.append(1)
+        else:
+            grading.append(0)
+    # print(grading)
+    score = (sum(grading)/questions) * 100  # FINAL GRADE
+    # print(score)
+
+    # DISPLAYING ANSWERS
+    imgResult = imgWarpColored.copy()
+    imgResult = utils.showAnswers(imgResult, questions, choices, myIndex, grading, ans)
+
+    imgRawDrawing = np.zeros_like(imgWarpColored)
+    imgRawDrawing = utils.showAnswers(imgRawDrawing, questions, choices, myIndex, grading, ans)
 
 imgBlank = np.zeros_like(img)
 imageArray = ([img, imgGray, imgBlur, imgCanny],
-              [imgContours, imgBiggestContours, imgWarpColored, imgThresh])
-imgStacked = utils.stackImages(imageArray, 0.5)
+              [imgContours, imgBiggestContours, imgWarpColored, imgThresh],
+              [imgResult, imgRawDrawing, imgBlank, imgBlank])
+imgStacked = utils.stackImages(imageArray, 0.3)
 
 cv2.imshow("Stacked Images", imgStacked)
 cv2.waitKey(0)
