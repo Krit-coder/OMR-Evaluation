@@ -16,6 +16,7 @@ img = cv2.imread(path)
 img = cv2.resize(img, (widthImg, heightImg))
 imgContours = img.copy()
 imgBiggestContours = img.copy()
+imgFinal = img.copy()
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 imgBlur = cv2.GaussianBlur(imgGray, (5, 5), 1)
 imgCanny = cv2.Canny(imgBlur, 10, 50)
@@ -27,7 +28,7 @@ cv2.drawContours(imgContours, contours, -1, (0, 255, 0), 5)
 # FIND RECTANGLES
 rectCont = utils.rectContour(contours)
 biggestContour = utils.getCornerPoints(rectCont[0])
-gradePoints = utils.getCornerPoints(rectCont[2])
+gradePoints = utils.getCornerPoints(rectCont[1])
 # print(biggestContour)
 
 if biggestContour.size != 0 and gradePoints.size != 0:
@@ -100,11 +101,31 @@ if biggestContour.size != 0 and gradePoints.size != 0:
     imgRawDrawing = np.zeros_like(imgWarpColored)
     imgRawDrawing = utils.showAnswers(imgRawDrawing, questions, choices, myIndex, grading, ans)
 
+    invMatrix = cv2.getPerspectiveTransform(p2, p1)
+    imgInvWarp = cv2.warpPerspective(imgRawDrawing, invMatrix, (widthImg, heightImg))
+
+    imgRawGrade = np.zeros_like(imgGradeDisplay)
+    cv2.putText(imgRawGrade, str(int(score))+"%", (60, 100), cv2.FONT_HERSHEY_COMPLEX, 3, (0, 0, 255), 3)
+    # cv2.imshow("Grade", imgRawGrade)
+    InvMatrixG = cv2.getPerspectiveTransform(pg2, pg1)
+    imgInvGradeDisplay = cv2.warpPerspective(imgRawGrade, InvMatrixG, (heightImg, widthImg))
+
+    # cv2.imshow("Grade", imgInvGradeDisplay)
+
+    imgFinal = cv2.addWeighted(imgFinal, 1, imgInvWarp, 1, 0)
+    imgFinal = cv2.addWeighted(imgFinal, 1, imgInvGradeDisplay, 1, 0)
+
+
 imgBlank = np.zeros_like(img)
 imageArray = ([img, imgGray, imgBlur, imgCanny],
               [imgContours, imgBiggestContours, imgWarpColored, imgThresh],
-              [imgResult, imgRawDrawing, imgBlank, imgBlank])
+              [imgResult, imgRawDrawing, imgInvWarp, imgFinal])
+# labels = [["Original", "Gray", "Blur", "Canny"],
+#           ["Contours", "Biggest Contour", "Warp", "Threshold"],
+#           ["Result", "Raw Drawing", "Inverse Warp", "Final"]]
+# imgStacked = utils.stackImages(imageArray, 0.3, labels)
 imgStacked = utils.stackImages(imageArray, 0.3)
 
+cv2.imshow("Final Result", imgFinal)
 cv2.imshow("Stacked Images", imgStacked)
 cv2.waitKey(0)
