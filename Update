@@ -37,3 +37,13 @@
 - Had errors in doing so.
 - Researched and found out the correct way to fit the grade in Grade box.
 - To be continued.
+
+21st April:
+- Researching on integrating flask so that user can upload the pic and get the marks update in excel file.
+
+23rd April:
+- Integrated Flask so now we can upload the image and It shows us the final image with the garde on it
+- The percentage also get stored in an excel file.
+
+24th April:
+- Added a Reset button so that you can again move back to main screen to upload next image.
