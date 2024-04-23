@@ -11,7 +11,7 @@ def check(img, questions, choices):
     widthImg, heightImg = 700, 700
     # questions = 10
     # choices = 5
-    ans = [0, 2, 2, 1, 0, 2, 2, 4, 3, 1]
+    ans = [0, 2, 2, 1, 0, 2, 2, 3, 3, 1]
     ################################
 
     # PREPROCESSING

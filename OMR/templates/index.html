@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OMR Sheet Evaluation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
 </head>
 <body>
-    <h3>Upload Image</h3>
+    <h2>Upload Image</h2>
     <form action="/check_sheet" method="post" enctype="multipart/form-data">
         <input type="file" name="image">
         <label for="num_questions">Number of Questions:</label>
         <input type="number" id="num_questions" name="num_questions" min="1" value="1">
         <label for="num_choices">Number of Choices:</label>
         <input type="number" id="num_choices" name="num_choices" min="1" value="1">
-        <button type="submit">Check</button>
+        <button type="submit">Process Image</button>
     </form>
 </body>
 </html>

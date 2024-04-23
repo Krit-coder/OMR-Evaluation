@@ -9,10 +9,10 @@ import os
 app = Flask(__name__)
 
 
-def check_img(img):
-    num_questions = int(request.form['num_questions'])
-    num_choices = int(request.form['num_choices'])
-    final_img = main.check(img, num_questions, num_choices)
+def check_img(img, q, c):
+    # num_questions = int(request.form['num_questions'])
+    # num_choices = int(request.form['num_choices'])
+    final_img = main.check(img, q, c)
     return final_img
 
 
@@ -49,10 +49,12 @@ def index():
 @app.route('/check_sheet', methods=['POST'])
 def upload_file():
     uploaded_file = request.files['image']
+    num_questions = int(request.form['num_questions'])
+    num_choices = int(request.form['num_choices'])
     if uploaded_file.filename != '':
         img_np = np.frombuffer(uploaded_file.read(), np.uint8)
         img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
-        processed_img = check_img(img)
+        processed_img = check_img(img, num_questions, num_choices)
         # cv2.imshow("Final Image", processed_img)
         # Assume score is calculated here
         ans = main.score  # Example score
