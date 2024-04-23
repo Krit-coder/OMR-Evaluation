@@ -10,7 +10,9 @@ app = Flask(__name__)
 
 
 def check_img(img):
-    final_img = main.check()
+    num_questions = int(request.form['num_questions'])
+    num_choices = int(request.form['num_choices'])
+    final_img = main.check(img, num_questions, num_choices)
     return final_img
 
 
@@ -56,12 +58,12 @@ def upload_file():
         ans = main.score  # Example score
         update_excel(ans)
         # Resize the processed image to fit within the window dimensions
-        processed_img = resize_image_to_fit(processed_img, 800, 600)
+        processed_img = resize_image_to_fit(processed_img, 720, 540)
         # Convert processed image to base64 for displaying
         _, processed_img_encoded = cv2.imencode('.png', processed_img)
         processed_img_base64 = base64.b64encode(processed_img_encoded).decode('utf-8')
         return f'''
-            <h1>Processed Image</h1>
+            <h2>Processed Image</h2>
             <img src="data:image/png;base64,{processed_img_base64}" alt="Processed Image"><br><br>
             <form action="/" method="get">
                 <input type="submit" value="Reset">

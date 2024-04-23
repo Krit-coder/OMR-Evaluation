@@ -5,17 +5,17 @@ import utils
 score = 0
 
 
-def check():
+def check(img, questions, choices):
     ################################
-    path = "5.jpg"
+    # path = "6.jpg"
     widthImg, heightImg = 700, 700
-    questions = 10
-    choices = 5
+    # questions = 10
+    # choices = 5
     ans = [0, 2, 2, 1, 0, 2, 2, 4, 3, 1]
     ################################
 
     # PREPROCESSING
-    img = cv2.imread(path)
+    # img = cv2.imread(path)
     img = cv2.resize(img, (widthImg, heightImg))
     imgContours = img.copy()
     imgBiggestContours = img.copy()
@@ -56,7 +56,7 @@ def check():
         imgWarpGary = cv2.cvtColor(imgWarpColored, cv2.COLOR_BGR2GRAY)
         imgThresh = cv2.threshold(imgWarpGary, 170, 255, cv2.THRESH_BINARY_INV)[1]
 
-        boxes = utils.splitBoxes(imgThresh)
+        boxes = utils.splitBoxes(imgThresh, questions, choices)
         # cv2.imshow("Boxes:", boxes[0])
         # cv2.imshow("Boxes:", boxes[2])
 
@@ -132,7 +132,7 @@ def check():
     imgStacked = utils.stackImages(imageArray, 0.3)
 
     # cv2.imshow("Final Result", imgFinal)
-    cv2.imshow("Stacked Images", imgStacked)
+    # cv2.imshow("Stacked Images", imgStacked)
     cv2.waitKey(0)
 
     return imgFinal

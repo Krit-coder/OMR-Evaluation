@@ -44,6 +44,7 @@
 23rd April:
 - Integrated Flask so now we can upload the image and It shows us the final image with the garde on it
 - The percentage also get stored in an excel file.
+- Added a Reset button so that you can again move back to main screen to upload next image.
 
 24th April:
-- Added a Reset button so that you can again move back to main screen to upload next image.
+There was an error as it was still taking the image provided in the code. So fixed that.
