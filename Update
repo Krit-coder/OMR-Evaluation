@@ -47,4 +47,8 @@
 - Added a Reset button so that you can again move back to main screen to upload next image.
 
 24th April:
-There was an error as it was still taking the image provided in the code. So fixed that.
+- There was an error as it was still taking the image provided in the code. So fixed that.
+- Added option to give number of questions and number of choices for each.
+- Added functionality as it can now scan the roll no and update the excel with it.
+
+25th April:

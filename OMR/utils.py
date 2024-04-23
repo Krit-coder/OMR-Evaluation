@@ -122,6 +122,6 @@ def showAnswers(img, questions, choices, myIndex, grading, ans):
             # cY1 = (x * secH) + secH // 2
             cv2.circle(img, (cX1, cY), 15, correctColor, cv2.FILLED)
 
-        cv2.circle(img, (cX, cY), 28, myColor, cv2.FILLED)
+        cv2.circle(img, (cX, cY), 30, myColor, cv2.FILLED)
 
     return img

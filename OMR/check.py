@@ -28,7 +28,7 @@ def resize_image_to_fit(img, max_width, max_height):
     return img
 
 
-def update_excel(score):
+def update_excel(score, roll):
     # Update Excel sheet with the score
     filename = 'students.xlsx'
     if not os.path.exists(filename):
@@ -37,7 +37,8 @@ def update_excel(score):
     wb = openpyxl.load_workbook(filename)
     sheet = wb.active
     row = sheet.max_row + 1
-    sheet.cell(row=row, column=1, value=score)
+    sheet.cell(row=row, column=1, value=roll)
+    sheet.cell(row=row, column=2, value=score)
     wb.save(filename)
 
 
@@ -58,7 +59,8 @@ def upload_file():
         # cv2.imshow("Final Image", processed_img)
         # Assume score is calculated here
         ans = main.score  # Example score
-        update_excel(ans)
+        roll = main.rollNo
+        update_excel(ans, roll)
         # Resize the processed image to fit within the window dimensions
         processed_img = resize_image_to_fit(processed_img, 720, 540)
         # Convert processed image to base64 for displaying
