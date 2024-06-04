@@ -4,15 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
+    <style>
+<!--        body {-->
+<!--            background-image: url('../img2.png');-->
+<!--            background-size: cover;-->
+<!--            background-repeat: no-repeat;-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            color: #333;-->
+<!--            padding: 20px;-->
+<!--        }-->
+        h2 {
+            color: #000; /* Optional: Set heading color */
+            padding: 20px
+        }
+        form {
+            padding: 20px;
+            border-radius: 10px; /* Optional: Add rounded corners to the form */
+        }
+        input[type="file"] {
+            margin-bottom: 10px; /* Optional: Add some spacing between elements */
+        }
+        button[type="submit"] {
+            background-color: #007bff; /* Optional: Change the button background color */
+            color: #fff; /* Optional: Change the button text color */
+            border: none; /* Optional: Remove border */
+            padding: 10px 20px; /* Optional: Add padding to the button */
+            border-radius: 5px; /* Optional: Add rounded corners to the button */
+            cursor: pointer; /* Optional: Add pointer cursor */
+        }
+    </style>
 </head>
 <body>
     <h2>Upload Image</h2>
     <form action="/check_sheet" method="post" enctype="multipart/form-data">
         <input type="file" name="image">
-        <label for="num_questions">Number of Questions:</label>
-        <input type="number" id="num_questions" name="num_questions" min="1" value="1">
-        <label for="num_choices">Number of Choices:</label>
-        <input type="number" id="num_choices" name="num_choices" min="1" value="4">
+<!--        <label for="num_questions">Number of Questions:</label>-->
+<!--        <input type="number" id="num_questions" name="num_questions" min="1" value="1">-->
+<!--        <label for="num_choices">Number of Choices:</label>-->
+<!--        <input type="number" id="num_choices" name="num_choices" min="1" value="4">-->
         <button type="submit">Process Image</button>
     </form>
 </body>

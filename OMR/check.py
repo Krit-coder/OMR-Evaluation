@@ -2,17 +2,17 @@ from flask import Flask, render_template, request
 import cv2
 import numpy as np
 import base64
-import main
+import main2
 import openpyxl
 import os
 
 app = Flask(__name__)
 
 
-def check_img(img, q, c):
+def check_img(img):
     # num_questions = int(request.form['num_questions'])
     # num_choices = int(request.form['num_choices'])
-    final_img = main.check(img, q, c)
+    final_img = main2.check(img)
     return final_img
 
 
@@ -50,16 +50,16 @@ def index():
 @app.route('/check_sheet', methods=['POST'])
 def upload_file():
     uploaded_file = request.files['image']
-    num_questions = int(request.form['num_questions'])
-    num_choices = int(request.form['num_choices'])
+    # num_questions = int(request.form['num_questions'])
+    # num_choices = int(request.form['num_choices'])
     if uploaded_file.filename != '':
         img_np = np.frombuffer(uploaded_file.read(), np.uint8)
         img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
-        processed_img = check_img(img, num_questions, num_choices)
+        processed_img = check_img(img)
         # cv2.imshow("Final Image", processed_img)
         # Assume score is calculated here
-        ans = main.score  # Example score
-        roll = main.rollNo
+        ans = main2.score  # Example score
+        roll = main2.rollNo
         update_excel(ans, roll)
         # Resize the processed image to fit within the window dimensions
         processed_img = resize_image_to_fit(processed_img, 720, 540)
