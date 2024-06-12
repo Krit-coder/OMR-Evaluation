@@ -326,11 +326,11 @@ def check(img):
     imgStacked3 = utils.stackImages(imageArray3, 0.3)
     imgStacked4 = utils.stackImages(imageArray4, 0.3)
 
-    cv2.imshow("Stacked Images1", imgStacked1)
+    # cv2.imshow("Stacked Images1", imgStacked1)
     # cv2.imshow("Stacked Images2", imgStacked2)
     # cv2.imshow("Stacked Images3", imgStacked3)
     # cv2.imshow("Stacked Images4", imgStacked4)
-    cv2.imshow("Final Result", imgFinal)
+    # cv2.imshow("Final Result", imgFinal)
     cv2.waitKey(0)
 
     return imgFinal
