@@ -29,7 +29,7 @@ The Automated Optical Mark Recognition (OMR) Sheet Grading System is designed to
 1. **Clone the Repository**:
 
     ```shell
-   git clone https://github.com/your-username/OMR-Evaluation.git
+   git clone https://github.com/Krit-coder/OMR-Evaluation.git
    cd OMR-Evaluation
    ```
    
